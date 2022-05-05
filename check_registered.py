@@ -39,8 +39,7 @@ def get_count():
 
 
 count = get_count()
-print(count)
-
+print('IPs Count: {}'.format(count))
 
 res = client.query(
     TableName=table_name,
@@ -50,4 +49,9 @@ res = client.query(
     KeyConditions=key_condition
 )
 
-print(res)
+list_of_ips = []
+for i in range(0, count):
+    # print(res['Items'][i]['ip']['S'])
+    list_of_ips.append(res['Items'][i]['ip']['S'])
+
+print(list_of_ips)
