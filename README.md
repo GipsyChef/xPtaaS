@@ -1,4 +1,4 @@
-# xPtaaS
+# xPtaaS task registration experiment
 
-Experiment for storage and retrival of load tasks based on cluster_id.
-Retriving a list of load generators.
+- Experiment for storage and retrieval of load tasks based on *cluster_id*.
+- Retrieving a list of load generators.
