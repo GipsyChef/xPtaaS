@@ -1,0 +1,59 @@
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "cluster_id",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "task_id",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "xptass",
+        "KeySchema": [
+            {
+                "AttributeName": "task_id",
+                "KeyType": "HASH"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2022-05-05T16:03:34.238000-04:00",
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 0,
+            "WriteCapacityUnits": 0
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-east-1:164666661898:table/xptass",
+        "TableId": "e43eb2dd-316c-41c6-83ba-35c667e9bbbd",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2022-05-05T16:20:28.081000-04:00"
+        },
+        "GlobalSecondaryIndexes": [
+            {
+                "IndexName": "cluster_id-index",
+                "KeySchema": [
+                    {
+                        "AttributeName": "cluster_id",
+                        "KeyType": "HASH"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "ALL"
+                },
+                "IndexStatus": "ACTIVE",
+                "ProvisionedThroughput": {
+                    "NumberOfDecreasesToday": 0,
+                    "ReadCapacityUnits": 0,
+                    "WriteCapacityUnits": 0
+                },
+                "IndexSizeBytes": 0,
+                "ItemCount": 0,
+                "IndexArn": "arn:aws:dynamodb:us-east-1:164666661898:table/xptass/index/cluster_id-index"
+            }
+        ]
+    }
+}
