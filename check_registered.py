@@ -28,6 +28,22 @@ key_condition = {
 }
 
 
+def get_count():
+    # this can run to make sure all tasks are registered
+    res = client.query(
+        TableName=table_name,
+        IndexName=index_name,
+        Select='COUNT',
+        KeyConditions=key_condition
+    )
+    return(res['Count'])
+
+
+count = get_count()
+print('------------------------------------------------------')
+print('Example Count Query: {}'.format(count))
+
+# retrive IPs of all registered tasks
 res = client.query(
     TableName=table_name,
     IndexName=index_name,
@@ -39,6 +55,7 @@ print('IPs Count: {}'.format(res['Count']))
 
 list_of_ips = []
 for i in range(0, res['Count']):
+    # print(res['Items'][i]['ip']['S'])
     list_of_ips.append(res['Items'][i]['ip']['S'])
 
 print(list_of_ips)
