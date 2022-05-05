@@ -28,19 +28,6 @@ key_condition = {
 }
 
 
-def get_count():
-    res = client.query(
-        TableName=table_name,
-        IndexName=index_name,
-        Select='COUNT',
-        KeyConditions=key_condition
-    )
-    return(res['Count'])
-
-
-count = get_count()
-print('IPs Count: {}'.format(count))
-
 res = client.query(
     TableName=table_name,
     IndexName=index_name,
@@ -48,9 +35,10 @@ res = client.query(
     AttributesToGet=['ip'],
     KeyConditions=key_condition
 )
+print('IPs Count: {}'.format(res['Count']))
 
 list_of_ips = []
-for i in range(0, count):
+for i in range(0, res['Count']):
     # print(res['Items'][i]['ip']['S'])
     list_of_ips.append(res['Items'][i]['ip']['S'])
 

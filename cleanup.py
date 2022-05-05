@@ -36,7 +36,7 @@ res = client.query(
     KeyConditions=key_condition
 )
 
-
+print('Deleating IPs: {}'.format(res['Count']))
 for i in range(0, res['Count']):
     del_res = client.delete_item(
         TableName=table_name,
