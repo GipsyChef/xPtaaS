@@ -39,7 +39,6 @@ print('IPs Count: {}'.format(res['Count']))
 
 list_of_ips = []
 for i in range(0, res['Count']):
-    # print(res['Items'][i]['ip']['S'])
     list_of_ips.append(res['Items'][i]['ip']['S'])
 
 print(list_of_ips)
