@@ -2,5 +2,5 @@
 
 ### Tested with up to 25,000 tasks
 
-- Experiment for storage and retrieval of load tasks based on *cluster_id*.
-- Retrieving a list of load generators.
+- Experiment for registration of load tasks.
+- Retrieving a list of IPs of load generators based on *cluster_id*.
