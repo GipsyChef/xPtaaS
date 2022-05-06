@@ -27,13 +27,8 @@ key_condition = {
     }
 }
 
-res = client.query(
-    TableName=table_name,
-    IndexName=index_name,
-    Select='SPECIFIC_ATTRIBUTES',
-    AttributesToGet=['task_id'],
-    KeyConditions=key_condition
-)
+res = {}
+res['Count'] = 1
 while res['Count'] > 0:
     res = client.query(
         TableName=table_name,
