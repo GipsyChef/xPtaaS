@@ -27,7 +27,6 @@ key_condition = {
     }
 }
 
-
 res = client.query(
     TableName=table_name,
     IndexName=index_name,
@@ -35,13 +34,20 @@ res = client.query(
     AttributesToGet=['task_id'],
     KeyConditions=key_condition
 )
-
-print('Deleating IPs: {}'.format(res['Count']))
-for i in range(0, res['Count']):
-    del_res = client.delete_item(
+while res['Count'] > 0:
+    res = client.query(
         TableName=table_name,
-        Key={
-            'task_id': {'S': res['Items'][i]['task_id']['S']}
-        }
+        IndexName=index_name,
+        Select='SPECIFIC_ATTRIBUTES',
+        AttributesToGet=['task_id'],
+        KeyConditions=key_condition
     )
-    print(del_res)
+
+    for i in range(0, res['Count']):
+        del_res = client.delete_item(
+            TableName=table_name,
+            Key={
+                'task_id': {'S': res['Items'][i]['task_id']['S']}
+            }
+        )
+        print(del_res)
