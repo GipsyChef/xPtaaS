@@ -27,8 +27,10 @@ key_condition = {
     }
 }
 
+# hack
 res = {}
 res['Count'] = 1
+# hack
 while res['Count'] > 0:
     res = client.query(
         TableName=table_name,
