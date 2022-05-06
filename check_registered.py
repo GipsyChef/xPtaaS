@@ -14,7 +14,6 @@ client = session.client('dynamodb')
 table_name = 'xptass'
 cluster_id = 'test-cluster-id'
 index_name = 'cluster_id-index'
-task_count = 25000
 
 key_condition = {
     'cluster_id': {
