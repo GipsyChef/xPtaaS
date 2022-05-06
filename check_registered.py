@@ -70,6 +70,7 @@ def get_res(last_key=None):
 
 list_of_ips = []
 my_count = 0
+cycles = 1
 res = get_res()
 for i in range(0, res['Count']):
     list_of_ips.append(res['Items'][i]['ip']['S'])
@@ -77,9 +78,11 @@ my_count = my_count + res['Count']
 while 'LastEvaluatedKey' in res:
     res = get_res(res['LastEvaluatedKey'])
     my_count = my_count + res['Count']
+    cycles = cycles + 1
     for i in range(0, res['Count']):
         list_of_ips.append(res['Items'][i]['ip']['S'])
 
 # print results
 print('IPs Count: {}'.format(my_count))
+print('Query Cycles: {}'.format(cycles))
 print(list_of_ips)
