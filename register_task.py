@@ -15,7 +15,7 @@ client = session.client('dynamodb')
 table_name = 'xptass'
 
 # test vars
-task_count = 2500
+task_count = 25000
 cluster_id = 'test-cluster-id'
 
 
