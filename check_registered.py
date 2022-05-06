@@ -68,19 +68,23 @@ def get_res(last_key=None):
     return(res)
 
 
+def append_ips(res, list_of_ips):
+    for i in range(0, res['Count']):
+        list_of_ips.append(res['Items'][i]['ip']['S'])
+    return(list_of_ips)
+
+
 list_of_ips = []
 my_count = 0
 cycles = 1
 res = get_res()
-for i in range(0, res['Count']):
-    list_of_ips.append(res['Items'][i]['ip']['S'])
+list_of_ips = append_ips(res, list_of_ips)
 my_count = my_count + res['Count']
 while 'LastEvaluatedKey' in res:
     res = get_res(res['LastEvaluatedKey'])
     my_count = my_count + res['Count']
     cycles = cycles + 1
-    for i in range(0, res['Count']):
-        list_of_ips.append(res['Items'][i]['ip']['S'])
+    list_of_ips = append_ips(res, list_of_ips)
 
 # print results
 print('IPs Count: {}'.format(my_count))
